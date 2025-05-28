@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Weather info!{% endblock %}</title>
+        {% block stylesheets %}
+            <style>
+                html {
+                    overflow: hidden;
+                }
+                main {
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                }
+            </style>
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        <main>
+            <div class="wrapper">
+                {% if error | length %}
+                    <h1>Ошибка</h1>
+                    <div class="info">
+                        <div class="row">{{ error }}</div>
+                    </div>
+                {% else %}
+                    <h1>Текущая погода в {{ weatherInfo.city | default("") }}, {{ weatherInfo.country | default("") }}</h1>
+                    <div class="info">
+                        <div class="row"><b class="title">Температура:</b> {{ weatherInfo.temperature | default("") }}°C</div>
+                        <div class="row"><b class="title">Состояние:</b> {{ weatherInfo.condition | default("") }} <img src="{{ weatherInfo.condition_icon }}" alt=""></div>
+                        <div class="row"><b class="title">Влажность:</b> {{ weatherInfo.humidity | default("") }}</div>
+                        <div class="row"><b class="title">Скорость ветра:</b> {{ weatherInfo.wind_speed | default("") }} км/ч</div>
+                        <div class="row"><b class="title">Последнее обновление:</b> {{ weatherInfo.last_updated | default("") }}</div>
+                    </div>
+                {% endif %}
+            </div>
+        </main>
+        {% endblock %}
+    </body>
+</html>
