@@ -5,8 +5,12 @@ Requirements:
  - have time to fun
 
 How to run:
-1. ```git clone [https://github.com/pavlishinnikita/weather-test-app.git](https://github.com/pavlishinnikita/weather-test-app.git)```
-2. ```make build```
-3. create ```.env.local``` file or put "real" values into .env
-4. optionally clear cache using ```make cache``` command
-5. go to http://localhost/api/weather/{city} to get weather for the {city} passed in request
+1. **Clone the repository:**
+  ```git clone https://github.com/pavlishinnikita/weather-test-app.git```
+2. **Setup project in docker:**
+   run ```make build```
+3. **Setup config:**
+  create ```.env.local``` file or put "real" values into .env
+  optionally clear cache using ```make cache``` command
+4. **See the app:**
+  go to http://localhost/api/weather/{city} to get weather for the {city} passed in request
