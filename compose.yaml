@@ -1,0 +1,28 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: weather_app_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html/default
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - app
+
+  php:
+    build:
+      context: ./
+    container_name: weather_app_php
+    volumes:
+      - ./:/var/www/html/default
+    working_dir: /var/www
+    networks:
+      - app
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+networks:
+  app:
