@@ -4,6 +4,7 @@ bash:
 build:
 	sudo docker compose build
 	sudo docker compose up -d --remove-orphans
+	sudo docker exec -it "weather_app_php" sh -c 'cd /var/www/html/default && composer install'
 
 run:
 	sudo docker-compose up -d
